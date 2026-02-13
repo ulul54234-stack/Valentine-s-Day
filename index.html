@@ -1,82 +1,250 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
-  <title>Happy Valentine's Day Max!</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<style>
-/* HELLO MAX! THIS IS MY CSS! */
-body {
-	background-image: url('tandem_grey.png');
-}
-body::before {
-	content: url('tandem_grey.png') url('broken.png') url('clock.png') url('colors.png')  url('theCertificate.png') url('thePerks.png');
-	display: none;
-}
-.certificate {
-	background: #fff;
-	background-image: url('theCertificate.png');
-	box-shadow: 0 0 5px #888;
-}
-.benefits {
-	background: #fff;
-	background-image: url('thePerks.png');
-	box-shadow: 0 0 5px #888;
-}
-.no {
-	background-image: url('broken.png');
-}
-.yes {
-	background-image: url('colors.png');
-}
-.maybe {
-	background-image: url('clock.png');
-}
-#image {
-	height: 517px;
-	width: 780px;
-	margin: 50px auto;
-}
-</style>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Syifa Anandita Riandini: Be My Valentine? 💖</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #e0f2f7 0%, #b3e5fc 100%); /* Gradasi biru muda */
+            font-family: 'Poppins', sans-serif; /* Font yang lebih modern dan lembut */
+            text-align: center;
+            overflow: hidden; /* Penting untuk animasi salju */
+            color: #212121;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap');
+
+        h1 {
+            font-family: 'Great Vibes', cursive; /* Font romantis untuk nama */
+            color: #d81b60; /* Merah muda keunguan */
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            line-height: 1.2;
+        }
+
+        h1 span {
+            display: block;
+            font-size: 1.8rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            color: #424242;
+            margin-top: 10px;
+        }
+
+        .gif_container img {
+            width: 200px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            margin-bottom: 30px;
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+            min-height: 160px; /* Jaga ruang agar tombol YES bisa membesar */
+            position: relative;
+            z-index: 2; /* Agar tombol tidak tertutup salju */
+        }
+
+        button {
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Animasi pop */
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+            outline: none;
+        }
+
+        #yesBtn {
+            background-color: #ff4081; /* Pink Cerah */
+            color: white;
+            z-index: 10;
+        }
+
+        #noBtn {
+            background-color: #90a4ae; /* Abu-abu hangat */
+            color: white;
+            font-size: 1.1rem; /* Awalnya lebih kecil */
+        }
+
+        button:hover {
+            transform: scale(1.05) translateY(-5px);
+            filter: brightness(1.1);
+        }
+
+        .success-content {
+            animation: fadeInScale 1.5s forwards;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .success-content h1 {
+            color: #d81b60;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+
+        .success-content img {
+            width: 280px;
+            border-radius: 20px;
+            margin-top: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .success-content p {
+            font-size: 1.6rem;
+            color: #424242;
+            margin-top: 25px;
+            line-height: 1.5;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+
+        /* Animasi Salju */
+        .snowflake {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: snowfall linear infinite;
+            z-index: 1; /* Di bawah konten utama */
+        }
+
+        @keyframes snowfall {
+            0% { transform: translateY(-10vh); opacity: 0; }
+            100% { transform: translateY(100vh); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
-	<script type="text/javascript">
-/* ZOMG. FUNCTION! */
-/* I ALSO LEARNED HOW TO DO A LOT OF THIS BY CHANGING .CSS INSTEAD OF ADDING/REMOVING CLASSES, WHICH I LEARNED IS BETTER. I ALSO LEARNED THAT I SHOULD MAKE VARS FOR BODY AND IMAGE SINCE I'M USING THEM MORE THAN ONCE! */
-	var beardedBoo = function() {
-		var body = $('body'),
-		    image = $("#image");
-		body.removeClass("no").removeClass("maybe")
-		image.removeClass("benefits").removeClass("certificate")
-		var answer = prompt("Will you be my valentine? Yes, No, Maybe?").toLowerCase()
-/* .toLowerCase IS BEST PRACTICE! IT'S ALSO OK IF YOU TYPE THE FIRST LETTER INSTEAD OF THE WORD! */
-		if (answer == "yes" || answer == 'y') {
-			body.addClass("yes")
-			image.addClass("certificate")
-		} else if (answer == "maybe" || answer == 'm') {
-			body.addClass("maybe")
-/* I WANTED THE BG TO CHANGE BEFORE THE ALERT AND THE IMAGE AFTER THE PROMPT AND THE NEXT PROMPT AFTER THAT! I LEARNED THAT IF ALERT AD IMAGE ARE NOT IN THE setTimeout TOGETHER, IT DOES THEM AT THE SAME TIME. */
-			setTimeout(beardedBoo, 6000)
-			setTimeout(function() {
-				alert("Perhaps you are not aware of the many benefits")
-				image.addClass("benefits")
-			}, 200)
-/* HEY!!! */
-		} else {
-			body.addClass("no")
-			setTimeout(function() {
-				alert("Say it isn't so. Please try again.")
-				beardedBoo()
-			}, 200)
-		}
-	}
-    setTimeout(beardedBoo, 300)
-/* ALL THESE ALERTS/PROMPTS COULD GET ANNOYING, IT'S BEST TO JUST BE MY VALENTINE */
-	</script>
 
-<div id="image"></div>
- 
+    <div class="gif_container">
+        <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4JmVwPXYxX2ludGVybm5hbF9naWZfYnlfaWQmY3Q9Zw/KzM1lAfJjCW3TM3p2G/giphy.gif" alt="Cute Bear Asking">
+    </div>
+
+    <h1 id="questionText">Will you be my Valentine, <br><span>Syifa Anandita Riandini? 💖</span></h1>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="celebrate()">YES</button>
+        <button id="noBtn" onclick="confuseAndGrow()">ARE YOU SURE?</button>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        let noButtonMessages = [
+            "Are you REALLY sure?",
+            "Think again, please? 🤔",
+            "My heart is getting bigger for you! ❤️",
+            "Don't let me down, Syifa!",
+            "This button is boring, the other one is fun!",
+            "You know you want to say YES! 😉",
+            "Okay, last chance... just say YES!"
+        ];
+        let messageIndex = 0;
+        let noBtnCurrentScale = 1; // Untuk melacak skala tombol 'no'
+
+        function confuseAndGrow() {
+            // Memperbesar tombol YES secara dramatis
+            yesScale += 0.5; // Lebih agresif
+            document.getElementById('yesBtn').style.transform = `scale(${yesScale})`;
+            document.getElementById('yesBtn').style.zIndex = yesScale > 3 ? 100 : 10; // Pastikan YES selalu di atas
+
+            // Mengubah teks tombol 'ARE YOU SURE?'
+            document.getElementById('noBtn').innerText = noButtonMessages[messageIndex];
+            messageIndex = (messageIndex + 1) % noButtonMessages.length;
+
+            // Memperkecil tombol NO dan membuatnya bergerak acak
+            noBtnCurrentScale -= 0.1;
+            if (noBtnCurrentScale < 0.6) noBtnCurrentScale = 0.6; // Jangan terlalu kecil
+
+            const noBtn = document.getElementById('noBtn');
+            const maxX = window.innerWidth * 0.3; // Batas pergerakan 30% lebar layar
+            const maxY = window.innerHeight * 0.2; // Batas pergerakan 20% tinggi layar
+
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+
+            noBtn.style.transform = `scale(${noBtnCurrentScale}) translate(${randomX}px, ${randomY}px)`;
+            noBtn.style.position = 'relative'; // Pastikan bisa bergerak dengan translate
+
+        }
+
+        function celebrate() {
+            document.body.innerHTML = `
+                <div class="success-content">
+                    <h1>YAAYYYY! You light up my world! ❤️✨</h1>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmZpbGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" alt="Happy Celebration">
+                    <p>My dearest Syifa Anandita Riandini, <br> thank you for making my heart skip a beat.</p>
+                    <p>Can't wait for our special Valentine's Day adventure together\! 🥰</p>
+                </div>
+            `;
+            document.body.style.background = "linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%)"; // Latar belakang pinkish
+            stopSnowfall(); // Hentikan salju saat perayaan
+        }
+
+        // Fungsi untuk membuat salju
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            document.body.appendChild(snowflake);
+
+            const size = Math.random() * 5 + 5; // Ukuran 5-10px
+            snowflake.style.width = `${size}px`;
+            snowflake.style.height = `${size}px`;
+            snowflake.style.left = `${Math.random() * 100}vw`; // Posisi acak di lebar layar
+            snowflake.style.animationDuration = `${Math.random() * 10 + 5}s`; // Durasi jatuh 5-15s
+            snowflake.style.animationDelay = `${Math.random() * 5}s`; // Delay acak
+            snowflake.style.opacity = Math.random() * 0.7 + 0.3; // Opasitas 0.3-1
+
+            // Hapus snowflake setelah selesai jatuh untuk efisiensi
+            snowflake.addEventListener('animationiteration', () => {
+                snowflake.remove();
+            });
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        let snowflakeInterval;
+        function startSnowfall() {
+            snowflakeInterval = setInterval(createSnowflake, 200); // Buat salju setiap 200ms
+        }
+
+        function stopSnowfall() {
+            clearInterval(snowflakeInterval);
+            document.querySelectorAll('.snowflake').forEach(s => s.remove());
+        }
+
+        // Mulai salju saat halaman dimuat
+        window.onload = startSnowfall;
+    </script>
 </body>
 </html>
