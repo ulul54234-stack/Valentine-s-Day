@@ -1,82 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
-  <title>Happy Valentine's Day Max!</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<style>
-/* HELLO MAX! THIS IS MY CSS! */
-body {
-	background-image: url('tandem_grey.png');
-}
-body::before {
-	content: url('tandem_grey.png') url('broken.png') url('clock.png') url('colors.png')  url('theCertificate.png') url('thePerks.png');
-	display: none;
-}
-.certificate {
-	background: #fff;
-	background-image: url('theCertificate.png');
-	box-shadow: 0 0 5px #888;
-}
-.benefits {
-	background: #fff;
-	background-image: url('thePerks.png');
-	box-shadow: 0 0 5px #888;
-}
-.no {
-	background-image: url('broken.png');
-}
-.yes {
-	background-image: url('colors.png');
-}
-.maybe {
-	background-image: url('clock.png');
-}
-#image {
-	height: 517px;
-	width: 780px;
-	margin: 50px auto;
-}
-</style>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine? (Blue Edition)</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            /* Latar belakang biru muda yang estetik */
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+
+        h1 {
+            color: #006064;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .gif_container img {
+            width: 180px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            min-height: 150px; /* Jaga ruang agar tombol YES bisa membesar */
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        #yesBtn {
+            background-color: #00acc1; /* Biru Toska */
+            color: white;
+            z-index: 10;
+        }
+
+        #noBtn {
+            background-color: #90a4ae; /* Biru Abu-abu */
+            color: white;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
+        }
+
+        .success-msg {
+            color: #00838f;
+            font-size: 1.2rem;
+            margin-top: 15px;
+        }
+    </style>
 </head>
 <body>
-	<script type="text/javascript">
-/* ZOMG. FUNCTION! */
-/* I ALSO LEARNED HOW TO DO A LOT OF THIS BY CHANGING .CSS INSTEAD OF ADDING/REMOVING CLASSES, WHICH I LEARNED IS BETTER. I ALSO LEARNED THAT I SHOULD MAKE VARS FOR BODY AND IMAGE SINCE I'M USING THEM MORE THAN ONCE! */
-	var beardedBoo = function() {
-		var body = $('body'),
-		    image = $("#image");
-		body.removeClass("no").removeClass("maybe")
-		image.removeClass("benefits").removeClass("certificate")
-		var answer = prompt("Will you be my valentine? Yes, No, Maybe?").toLowerCase()
-/* .toLowerCase IS BEST PRACTICE! IT'S ALSO OK IF YOU TYPE THE FIRST LETTER INSTEAD OF THE WORD! */
-		if (answer == "yes" || answer == 'y') {
-			body.addClass("yes")
-			image.addClass("certificate")
-		} else if (answer == "maybe" || answer == 'm') {
-			body.addClass("maybe")
-/* I WANTED THE BG TO CHANGE BEFORE THE ALERT AND THE IMAGE AFTER THE PROMPT AND THE NEXT PROMPT AFTER THAT! I LEARNED THAT IF ALERT AD IMAGE ARE NOT IN THE setTimeout TOGETHER, IT DOES THEM AT THE SAME TIME. */
-			setTimeout(beardedBoo, 6000)
-			setTimeout(function() {
-				alert("Perhaps you are not aware of the many benefits")
-				image.addClass("benefits")
-			}, 200)
-/* HEY!!! */
-		} else {
-			body.addClass("no")
-			setTimeout(function() {
-				alert("Say it isn't so. Please try again.")
-				beardedBoo()
-			}, 200)
-		}
-	}
-    setTimeout(beardedBoo, 300)
-/* ALL THESE ALERTS/PROMPTS COULD GET ANNOYING, IT'S BEST TO JUST BE MY VALENTINE */
-	</script>
 
-<div id="image"></div>
- 
+    <div class="gif_container">
+        <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/KzM1lAfJjCW3TM3p2G/giphy.gif" alt="Cute Blue Bear">
+    </div>
+
+    <h1 id="questionText">Will you be my Valentine? 💙</h1>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="celebrate()">YES</button>
+        <button id="noBtn" onclick="shrinkAndGrow()">ARE YOU SURE?</button>
+    </div>
+
+    <script>
+        let yesScale = 1;
+        let noScale = 1;
+        const messages = [
+            "Are you sure?", 
+            "Really??", 
+            "Think about it!", 
+            "Wait, look at the YES button!", 
+            "Don't do this to me... 🥺", 
+            "It's getting bigger!", 
+            "Just click YES already! 😂"
+        ];
+        let msgIndex = 0;
+
+        function shrinkAndGrow() {
+            // Perbesar tombol YES setiap kali tombol NO diklik
+            yesScale += 0.4;
+            document.getElementById('yesBtn').style.transform = `scale(${yesScale})`;
+            
+            // Perkecil tombol NO sedikit demi sedikit
+            noScale -= 0.08;
+            if (noScale < 0.4) noScale = 0.4;
+            document.getElementById('noBtn').style.transform = `scale(${noScale})`;
+
+            // Ubah teks tombol NO
+            document.getElementById('noBtn').innerText = messages[msgIndex];
+            msgIndex = (msgIndex + 1) % messages.length;
+        }
+
+        function celebrate() {
+            document.body.innerHTML = `
+                <div style="animation: fadeIn 1s;">
+                    <h1>YAY! IT'S A BLUE DATE! 🧊💙</h1>
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/108M2qNEpQiJK/giphy.gif" style="width:300px; border-radius:20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                    <p class="success-msg"><b>You've made me the happiest person!</b></p>
+                    <p style="color: #546e7a;">Prepare for Feb 14th ✨</p>
+                </div>
+            `;
+            document.body.style.background = "#e1f5fe";
+        }
+    </script>
 </body>
 </html>
