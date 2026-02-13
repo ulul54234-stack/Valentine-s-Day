@@ -1,82 +1,186 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
-  <title>Happy Valentine's Day Max!</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<style>
-/* HELLO MAX! THIS IS MY CSS! */
-body {
-	background-image: url('tandem_grey.png');
-}
-body::before {
-	content: url('tandem_grey.png') url('broken.png') url('clock.png') url('colors.png')  url('theCertificate.png') url('thePerks.png');
-	display: none;
-}
-.certificate {
-	background: #fff;
-	background-image: url('theCertificate.png');
-	box-shadow: 0 0 5px #888;
-}
-.benefits {
-	background: #fff;
-	background-image: url('thePerks.png');
-	box-shadow: 0 0 5px #888;
-}
-.no {
-	background-image: url('broken.png');
-}
-.yes {
-	background-image: url('colors.png');
-}
-.maybe {
-	background-image: url('clock.png');
-}
-#image {
-	height: 517px;
-	width: 780px;
-	margin: 50px auto;
-}
-</style>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Special for Syifa Anandita Riandini 💙</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap');
+
+        :root {
+            --primary-blue: #00acc1;
+            --light-blue: #e0f7fa;
+            --bg-gradient: linear-gradient(135deg, #e0f2f1 0%, #b2ebf2 100%);
+        }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: var(--bg-gradient);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- Animasi Salju --- */
+        .snowflake {
+            position: absolute; top: -10px; color: white;
+            user-select: none; z-index: 1; pointer-events: none;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(105vh) rotate(360deg); }
+        }
+
+        /* --- Amplop Surat --- */
+        #envelope-wrapper {
+            position: absolute; z-index: 100; cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+        #envelope-wrapper:hover { transform: scale(1.1); }
+        .envelope {
+            font-size: 100px; color: var(--primary-blue);
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.1));
+        }
+        .envelope-text {
+            text-align: center; color: #006064; font-weight: 600; margin-top: 10px;
+        }
+
+        /* --- Container Utama --- */
+        .container {
+            display: none; width: 90%; max-width: 500px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 30px; border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px); text-align: center;
+            z-index: 10; border: 1px solid white;
+        }
+
+        .slide { display: none; animation: zoomIn 0.8s ease; }
+        .slide.active { display: block; }
+
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        h1 { font-family: 'Great Vibes', cursive; font-size: 2.8rem; color: #00838f; margin: 15px 0; }
+        p { font-size: 1rem; color: #37474f; line-height: 1.6; margin-bottom: 20px; }
+
+        /* --- Custom Foto --- */
+        .photo-frame {
+            width: 150px; height: 150px; margin: 0 auto 20px;
+            border-radius: 50%; border: 5px solid white;
+            overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- Tombol --- */
+        .btn-group { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+        button {
+            padding: 12px 25px; border-radius: 50px; border: none;
+            cursor: pointer; font-weight: 600; transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .next-btn { background: var(--primary-blue); color: white; width: 100%; }
+        #yesBtn { background: #00838f; color: white; padding: 15px 40px; font-size: 1.2rem; }
+        #noBtn { background: #cfd8dc; color: #546e7a; position: relative; }
+
+        .choice-btn {
+            background: white; color: var(--primary-blue); border: 2px solid var(--primary-blue);
+            width: 100%; text-align: center;
+        }
+        .choice-btn:hover { background: var(--primary-blue); color: white; }
+    </style>
 </head>
 <body>
-	<script type="text/javascript">
-/* ZOMG. FUNCTION! */
-/* I ALSO LEARNED HOW TO DO A LOT OF THIS BY CHANGING .CSS INSTEAD OF ADDING/REMOVING CLASSES, WHICH I LEARNED IS BETTER. I ALSO LEARNED THAT I SHOULD MAKE VARS FOR BODY AND IMAGE SINCE I'M USING THEM MORE THAN ONCE! */
-	var beardedBoo = function() {
-		var body = $('body'),
-		    image = $("#image");
-		body.removeClass("no").removeClass("maybe")
-		image.removeClass("benefits").removeClass("certificate")
-		var answer = prompt("Will you be my valentine? Yes, No, Maybe?").toLowerCase()
-/* .toLowerCase IS BEST PRACTICE! IT'S ALSO OK IF YOU TYPE THE FIRST LETTER INSTEAD OF THE WORD! */
-		if (answer == "yes" || answer == 'y') {
-			body.addClass("yes")
-			image.addClass("certificate")
-		} else if (answer == "maybe" || answer == 'm') {
-			body.addClass("maybe")
-/* I WANTED THE BG TO CHANGE BEFORE THE ALERT AND THE IMAGE AFTER THE PROMPT AND THE NEXT PROMPT AFTER THAT! I LEARNED THAT IF ALERT AD IMAGE ARE NOT IN THE setTimeout TOGETHER, IT DOES THEM AT THE SAME TIME. */
-			setTimeout(beardedBoo, 6000)
-			setTimeout(function() {
-				alert("Perhaps you are not aware of the many benefits")
-				image.addClass("benefits")
-			}, 200)
-/* HEY!!! */
-		} else {
-			body.addClass("no")
-			setTimeout(function() {
-				alert("Say it isn't so. Please try again.")
-				beardedBoo()
-			}, 200)
-		}
-	}
-    setTimeout(beardedBoo, 300)
-/* ALL THESE ALERTS/PROMPTS COULD GET ANNOYING, IT'S BEST TO JUST BE MY VALENTINE */
-	</script>
 
-<div id="image"></div>
- 
+    <div id="envelope-wrapper" onclick="openLetter()">
+        <div class="envelope">✉️</div>
+        <div class="envelope-text">Klik untuk buka surat dari Aku</div>
+    </div>
+
+    <div class="container" id="mainContainer">
+        
+        <div class="slide active" id="slide1">
+            <div class="photo-frame">
+                <img src="https://via.placeholder.com/150 https://drive.google.com/file/d/1QP5ryQjwUXRwNgxrBjrd2fmXGnKUYMFQ/view?usp=drivesdk
+            </div>
+            <h1>Halo, Syifa...</h1>
+            <p>Syifa Anandita Riandini, ada pesan rahasia di dalam surat ini yang cuma boleh kamu yang baca. Lanjut?</p>
+            <button class="next-btn" onclick="nextSlide(2)">Boleh, lanjut! ✨</button>
+        </div>
+
+        <div class="slide" id="slide2">
+            <h1>Tentang Kamu...</h1>
+            <p>Aku selalu kagum bagaimana tawamu bisa mencerahkan hariku, dan bagaimana matamu selalu menenangkan batinku.</p>
+            <div class="btn-group">
+                <button class="choice-btn" onclick="nextSlide(3)">Kamu bisa aja... 😊</button>
+                <button class="choice-btn" onclick="nextSlide(3)">Masa sih? 🤭</button>
+                <button class="choice-btn" onclick="nextSlide(3)">Lanjut bacanya! 💙</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide3">
+            <h1>My Hope</h1>
+            <p>Di bawah salju yang turun ini, aku berharap bisa terus berjalan di sampingmu, Syifa Anandita Riandini.</p>
+            <button class="next-btn" onclick="nextSlide(4)">Ke Pertanyaan Utama ➡</button>
+        </div>
+
+        <div class="slide" id="slide4">
+            <h1>The Big Question</h1>
+            <p>Will you be my Valentine, <br><b>Syifa Anandita Riandini?</b> 💙</p>
+            <div style="display: flex; gap: 10px; justify-content: center; min-height: 150px; align-items: center;">
+                <button id="yesBtn" onclick="nextSlide(5)">YES! 💙</button>
+                <button id="noBtn" onclick="moveNo()">ARE YOU SURE?</button>
+            </div>
+        </div>
+
+        <div class="slide" id="slide5">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMmZpbGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4eGZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" style="width:150px; border-radius:20px;">
+            <h1>Yay! I Love You! ❤️</h1>
+            <p>Terima kasih sudah memilihku, Syifa. Aku janji bakal bikin Valentine tahun ini jadi yang paling spesial buat kamu!</p>
+            <p style="font-size: 0.8rem; font-style: italic;">See you on Feb 14th! 🧊💙</p>
+        </div>
+
+    </div>
+
+    <script>
+        // Fungsi Buka Surat
+        function openLetter() {
+            document.getElementById('envelope-wrapper').style.display = 'none';
+            document.getElementById('mainContainer').style.display = 'block';
+        }
+
+        // Fungsi Slide
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('slide' + n).classList.add('active');
+        }
+
+        // Fungsi Tombol No
+        let yesScale = 1;
+        function moveNo() {
+            yesScale += 0.4;
+            document.getElementById('yesBtn').style.transform = `scale(${yesScale})`;
+            const x = Math.random() * 150 - 75;
+            const y = Math.random() * 150 - 75;
+            document.getElementById('noBtn').style.transform = `translate(${x}px, ${y}px)`;
+        }
+
+        // Salju
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.classList.add('snowflake');
+            snow.innerHTML = '❄️';
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snow.style.fontSize = Math.random() * 10 + 10 + 'px';
+            document.body.appendChild(snow);
+            setTimeout(() => snow.remove(), 5000);
+        }
+        setInterval(createSnow, 200);
+    </script>
 </body>
 </html>
