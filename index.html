@@ -1,82 +1,208 @@
-<!doctype html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <script src="http://code.jquery.com/jquery-1.7.1.min.js" type="text/javascript"></script>  
-  <title>Happy Valentine's Day Max!</title>
-<link rel="icon" type="image/jpg" href="favicon.jpg">
-<style>
-/* HELLO MAX! THIS IS MY CSS! */
-body {
-	background-image: url('tandem_grey.png');
-}
-body::before {
-	content: url('tandem_grey.png') url('broken.png') url('clock.png') url('colors.png')  url('theCertificate.png') url('thePerks.png');
-	display: none;
-}
-.certificate {
-	background: #fff;
-	background-image: url('theCertificate.png');
-	box-shadow: 0 0 5px #888;
-}
-.benefits {
-	background: #fff;
-	background-image: url('thePerks.png');
-	box-shadow: 0 0 5px #888;
-}
-.no {
-	background-image: url('broken.png');
-}
-.yes {
-	background-image: url('colors.png');
-}
-.maybe {
-	background-image: url('clock.png');
-}
-#image {
-	height: 517px;
-	width: 780px;
-	margin: 50px auto;
-}
-</style>
-  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine untuk Syifaa Anandita Riandini</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #87CEEB, #FFFFFF);
+            overflow: hidden;
+            position: relative;
+        }
+        .snow {
+            position: absolute;
+            top: -10px;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .snowflake {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        .slide {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.8);
+            transition: opacity 0.5s;
+        }
+        .slide.active {
+            display: flex;
+        }
+        h1 {
+            font-size: 3em;
+            color: #FF69B4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.5em;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            background: #FF69B4;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #FF1493;
+        }
+        .envelope {
+            width: 200px;
+            height: 150px;
+            background: #D2691E;
+            position: relative;
+            margin: 20px auto;
+            cursor: pointer;
+            border-radius: 10px;
+        }
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: #D2691E;
+            clip-path: polygon(0 0, 50% 100%, 100% 0);
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+        .option {
+            margin: 10px;
+        }
+        #photoInput {
+            margin: 20px;
+        }
+        #customPhoto {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 10px;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
-	<script type="text/javascript">
-/* ZOMG. FUNCTION! */
-/* I ALSO LEARNED HOW TO DO A LOT OF THIS BY CHANGING .CSS INSTEAD OF ADDING/REMOVING CLASSES, WHICH I LEARNED IS BETTER. I ALSO LEARNED THAT I SHOULD MAKE VARS FOR BODY AND IMAGE SINCE I'M USING THEM MORE THAN ONCE! */
-	var beardedBoo = function() {
-		var body = $('body'),
-		    image = $("#image");
-		body.removeClass("no").removeClass("maybe")
-		image.removeClass("benefits").removeClass("certificate")
-		var answer = prompt("Will you be my valentine? Yes, No, Maybe?").toLowerCase()
-/* .toLowerCase IS BEST PRACTICE! IT'S ALSO OK IF YOU TYPE THE FIRST LETTER INSTEAD OF THE WORD! */
-		if (answer == "yes" || answer == 'y') {
-			body.addClass("yes")
-			image.addClass("certificate")
-		} else if (answer == "maybe" || answer == 'm') {
-			body.addClass("maybe")
-/* I WANTED THE BG TO CHANGE BEFORE THE ALERT AND THE IMAGE AFTER THE PROMPT AND THE NEXT PROMPT AFTER THAT! I LEARNED THAT IF ALERT AD IMAGE ARE NOT IN THE setTimeout TOGETHER, IT DOES THEM AT THE SAME TIME. */
-			setTimeout(beardedBoo, 6000)
-			setTimeout(function() {
-				alert("Perhaps you are not aware of the many benefits")
-				image.addClass("benefits")
-			}, 200)
-/* HEY!!! */
-		} else {
-			body.addClass("no")
-			setTimeout(function() {
-				alert("Say it isn't so. Please try again.")
-				beardedBoo()
-			}, 200)
-		}
-	}
-    setTimeout(beardedBoo, 300)
-/* ALL THESE ALERTS/PROMPTS COULD GET ANNOYING, IT'S BEST TO JUST BE MY VALENTINE */
-	</script>
+    <!-- Efek Salju -->
+    <div class="snow" id="snow"></div>
 
-<div id="image"></div>
- 
+    <!-- Slide 1: Halaman Utama -->
+    <div class="slide active" id="slide1">
+        <h1>WILL YOU BE MY VALENTINE?</h1>
+        <div class="envelope" onclick="openEnvelope()"></div>
+        <p>Klik amplop untuk membuka!</p>
+        <input type="file" id="photoInput" accept="image/*" onchange="loadPhoto()">
+        <p>Upload foto kamu untuk custom pesan!</p>
+        <button onclick="nextSlide(2)">YES</button>
+        <button onclick="sureMessage()">ARE YOU SURE?</button>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide" id="slide2">
+        <h1>Yay! Kamu bilang YES! 💖</h1>
+        <p>Syifaa Anandita Riandini, kamu adalah yang terbaik!</p>
+        <button onclick="nextSlide(3)">Lanjut</button>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide" id="slide3">
+        <h1>Aku punya sesuatu untukmu...</h1>
+        <p>Sebuah pesan penuh cinta dari aku ke Syifaa Anandita Riandini! ❄️❤️</p>
+        <button onclick="nextSlide(4)">Buka Pesan</button>
+    </div>
+
+    <!-- Slide 4: 3 Pilihan -->
+    <div class="slide" id="slide4">
+        <h1>Pilih jawaban lucu untuk hari ini!</h1>
+        <div class="options">
+            <button class="option" onclick="chooseOption('Aku mau jalan-jalan di salju!')">Jalan-jalan di salju</button>
+            <button class="option" onclick="chooseOption('Makan coklat panas bareng!')">Makan coklat panas</button>
+            <button class="option" onclick="chooseOption('Pelukan hangat sepanjang hari!')">Pelukan hangat</button>
+        </div>
+        <p id="choiceResult"></p>
+        <button onclick="nextSlide(5)">Lanjut ke Akhir</button>
+    </div>
+
+    <!-- Slide 5: Akhir dengan Custom Foto -->
+    <div class="slide" id="slide5">
+        <h1>Happy Valentine, Syifaa Anandita Riandini! 🎉</h1>
+        <p>Kamu adalah Valentine terbaikku! Semoga hari ini penuh kebahagiaan.</p>
+        <img id="customPhoto" src="" alt="Foto Custom" style="display: none;">
+        <button onclick="restart()">Mulai Lagi</button>
+    </div>
+
+    <script>
+        // Efek Salju
+        function createSnowflakes() {
+            const snow = document.getElementById('snow');
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+                snowflake.style.width = snowflake.style.height = Math.random() * 5 + 2 + 'px';
+                snow.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+
+        // Navigasi Slide
+        function nextSlide(slideNumber) {
+            document.querySelectorAll('.slide').forEach(slide => slide.classList.remove('active'));
+            document.getElementById('slide' + slideNumber).classList.add('active');
+        }
+
+        function openEnvelope() {
+            nextSlide(2);
+        }
+
+        function sureMessage() {
+            alert("Yakin nih? Aku yakin kamu mau bilang YES! 😘");
+        }
+
+        function chooseOption(choice) {
+            document.getElementById('choiceResult').innerText = "Kamu pilih: " + choice + " - Bagus sekali!";
+        }
+
+        function loadPhoto() {
+            const file = document.getElementById('photoInput').files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('customPhoto').src = e.target.result;
+                    document.getElementById('customPhoto').style.display = 'block';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function restart() {
+            nextSlide(1);
+            document.getElementById('customPhoto').style.display = 'none';
+            document.getElementById('choiceResult').innerText = '';
+        }
+    </script>
 </body>
 </html>
